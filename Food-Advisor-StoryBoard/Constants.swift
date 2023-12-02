@@ -23,4 +23,4 @@ let allPostsUrl = "https://dummyjson.com/posts"
 let authenticationUrl = "https://dummyjson.com/auth/login"
 let PostsUrl = "https://jsonplaceholder.typicode.com/posts/1"
 // MARK: StoryBoard Constants
-let postsCellIdentifier = "postsCell"
+let postsCellIdentifier = "postCell"

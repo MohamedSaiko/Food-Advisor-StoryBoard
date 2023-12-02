@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController {
-    var homeViewModel = HomeViewModel()
-    let searchController = UISearchController()
+class HomeViewController: UIViewController {
+    private var homeViewModel = HomeViewModel()
+    private let searchController = UISearchController()
     @IBOutlet private weak var postsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -43,10 +43,8 @@ extension HomeViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = homeViewModel.posts[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = post.title
-        cell.contentConfiguration = content
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: postsCellIdentifier, for: indexPath) as? PostCell
+        cell?.configure(post: post)
+        return cell ?? UITableViewCell()
     }
 }

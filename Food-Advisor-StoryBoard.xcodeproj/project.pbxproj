@@ -21,6 +21,7 @@
 		41CED27B2B1B5CD400AABF21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CED2712B1B5CD400AABF21 /* Constants.swift */; };
 		41CED27D2B1B5CD400AABF21 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CED2752B1B5CD400AABF21 /* SignInViewModel.swift */; };
 		41CED27E2B1B5CD400AABF21 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CED2762B1B5CD400AABF21 /* SignInViewController.swift */; };
+		41E6DE0C2B1B639D008D17F5 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E6DE0B2B1B639D008D17F5 /* PostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		41CED2712B1B5CD400AABF21 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		41CED2752B1B5CD400AABF21 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		41CED2762B1B5CD400AABF21 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		41E6DE0B2B1B639D008D17F5 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			children = (
 				41CED25E2B1B5C1500AABF21 /* HomeViewModel.swift */,
 				41CED25F2B1B5C1500AABF21 /* HomeViewController.swift */,
+				41E6DE0B2B1B639D008D17F5 /* PostCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				41CED2462B1B58A500AABF21 /* AppDelegate.swift in Sources */,
 				41CED2652B1B5C1500AABF21 /* HomeViewModel.swift in Sources */,
 				41CED2792B1B5CD400AABF21 /* AuthenticationManager.swift in Sources */,
+				41E6DE0C2B1B639D008D17F5 /* PostCell.swift in Sources */,
 				41CED2482B1B58A500AABF21 /* SceneDelegate.swift in Sources */,
 				41CED27A2B1B5CD400AABF21 /* NetworkManager.swift in Sources */,
 				41CED2782B1B5CD400AABF21 /* PostsData.swift in Sources */,
