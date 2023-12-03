@@ -11,6 +11,7 @@ final class HomeViewModel {
     public var posts = [Post]()
     private let networkManager = NetworkManager()
     private var skip = 0
+    private let totalNumberOfPosts = 150
     
     func getPosts(completion: @escaping () -> Void) {
         networkManager.loadData(skip: skip) { [weak self] result in
@@ -25,6 +26,11 @@ final class HomeViewModel {
             case .failure(let error):
                 print(NetworkError.unknownError(error))
             }
+        }
+    }
+    func tableViewWillEnd(indexPath: IndexPath, completion: () -> Void) {
+        if indexPath.row == posts.count - 1, posts.count < totalNumberOfPosts {
+            completion()
         }
     }
 }

@@ -16,39 +16,49 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+        postsTableView.delegate = self
+        postsTableView.dataSource = self
+        updateTableView()
+    }
+    private func configureUI() {
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
-        
         let logo = UIImage(named: logo)?.withRenderingMode(.alwaysOriginal)
         let search = UIImage(named: search)?.withRenderingMode(.alwaysOriginal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: logo)
         navigationItem.leftBarButtonItem?.isEnabled = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: search, style: .plain, target: self, action: #selector(searchTapped))
-        
         refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
         postsTableView.addSubview(refreshControl)
-        postsTableView.delegate = self
-        postsTableView.dataSource = self
-        
-        updateTableView()
     }
-    func updateTableView() {
+    private func updateTableView() {
         homeViewModel.getPosts { [weak self] in
             DispatchQueue.main.async {
                 self?.postsTableView.reloadData()
                 self?.activityIndicator.stopAnimating()
+                self?.postsTableView.tableFooterView = nil
             }
         }
     }
-    @objc func handleRefreshControl() {
+    @objc private func handleRefreshControl() {
         updateTableView()
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.refreshControl.endRefreshing()
         }
     }
-    @objc func searchTapped() {
+    @objc private func searchTapped() {
         navigationItem.searchController = searchController
+    }
+    private func createFooterSpinner() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        spinner.hidesWhenStopped = true
+        return footerView
     }
 }
 // MARK: - Data Source
@@ -60,14 +70,13 @@ extension HomeViewController: UITableViewDataSource {
         let post = homeViewModel.posts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: postsCellIdentifier, for: indexPath) as? PostCell
         cell?.configure(post: post)
+        homeViewModel.tableViewWillEnd(indexPath: indexPath) {
+            self.postsTableView.tableFooterView = createFooterSpinner()
+            updateTableView()
+        }
         return cell ?? UITableViewCell()
     }
 }
 // MARK: - Delegate
 extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == homeViewModel.posts.count - 2 {
-            updateTableView()
-        }
-    }
 }
