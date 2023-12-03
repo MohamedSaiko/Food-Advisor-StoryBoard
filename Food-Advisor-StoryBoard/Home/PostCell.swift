@@ -7,9 +7,9 @@
 
 import UIKit
 
-class PostCell: UITableViewCell {
-    @IBOutlet weak var postBody: UILabel!
+final class PostCell: UITableViewCell {
+    @IBOutlet private weak var postBody: UILabel!
     func configure(post: Post) {
-        postBody.text = post.body
+        postBody.text = String(post.id)
     }
 }

@@ -21,6 +21,6 @@ let oreo = "oreo"
 // MARK: Networking Constants
 let allPostsUrl = "https://dummyjson.com/posts"
 let authenticationUrl = "https://dummyjson.com/auth/login"
-let PostsUrl = "https://jsonplaceholder.typicode.com/posts/1"
+let limit = "/?limit=10&skip="
 // MARK: StoryBoard Constants
 let postsCellIdentifier = "postCell"

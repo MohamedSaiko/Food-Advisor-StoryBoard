@@ -7,15 +7,21 @@
 
 import Foundation
 
-struct HomeViewModel {
-    var posts = [Post]()
+final class HomeViewModel {
+    public var posts = [Post]()
     private let networkManager = NetworkManager()
+    private var skip = 0
     
-    mutating func getPosts(completion: @escaping (PostsData) -> Void) {
-        networkManager.loadData { result in
+    func getPosts(completion: @escaping () -> Void) {
+        networkManager.loadData(skip: skip) { [weak self] result in
+            guard let self = self else {
+                return
+            }
             switch result {
             case .success(let data):
-                completion(data)
+                self.posts.append(contentsOf: data.posts)
+                completion()
+                self.skip += 10
             case .failure(let error):
                 print(NetworkError.unknownError(error))
             }

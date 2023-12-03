@@ -211,6 +211,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="medium" id="Qb4-kW-8w2">
+                                <rect key="frame" x="0.0" y="372" width="390" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="RR9-xX-M7K"/>
+                                    <constraint firstAttribute="height" constant="100" id="hJT-UV-Xub"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sMv-bc-ZEa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -223,6 +231,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zFi-bC-WiG"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Qb4-kW-8w2" id="AfP-SG-AHk"/>
                         <outlet property="postsTableView" destination="xuI-zp-mKP" id="5Th-zA-LaV"/>
                     </connections>
                 </viewController>
