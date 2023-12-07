@@ -206,7 +206,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="postBody" destination="Xd6-ao-rK1" id="nbg-Mj-Qfn"/>
+                                            <outlet property="bodyLabel" destination="Xd6-ao-rK1" id="goj-ET-GyM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

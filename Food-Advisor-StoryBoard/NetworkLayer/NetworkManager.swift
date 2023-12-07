@@ -15,17 +15,21 @@ enum NetworkError: Error {
 }
 
 struct NetworkManager {
-    public func loadData(skip: Int,completion: @ escaping (Result<PostsData, NetworkError>) -> Void) {
+    
+    func loadData(skip: Int,completion: @ escaping (Result<PostsData, NetworkError>) -> Void) {
         let url = URL(string: allPostsUrl + limit + "\(skip)")
+        
         guard let url = url else {
             completion(.failure(.invalidURL))
             return
         }
+        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
                 completion(.failure(.networkError))
                 return
             }
+            
             do {
                 let jsonPetitions = try JSONDecoder().decode(PostsData.self, from: data)
                 completion(.success(jsonPetitions))

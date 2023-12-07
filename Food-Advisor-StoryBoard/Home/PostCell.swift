@@ -8,8 +8,10 @@
 import UIKit
 
 final class PostCell: UITableViewCell {
-    @IBOutlet private weak var postBody: UILabel!
+    
+    @IBOutlet private weak var bodyLabel: UILabel!
+    
     func configure(post: Post) {
-        postBody.text = String(post.id)
+        bodyLabel.text = String(post.id)
     }
 }

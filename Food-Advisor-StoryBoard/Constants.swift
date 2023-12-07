@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: AssetsNames
+
 let logo = "logo"
 let search = "search"
 let more = "more"
@@ -18,9 +19,13 @@ let dounts = "dounts"
 let girls = "girls"
 let iceCream = "iceCream"
 let oreo = "oreo"
+
 // MARK: Networking Constants
+
 let allPostsUrl = "https://dummyjson.com/posts"
 let authenticationUrl = "https://dummyjson.com/auth/login"
 let limit = "/?limit=10&skip="
+
 // MARK: StoryBoard Constants
+
 let postsCellIdentifier = "postCell"
