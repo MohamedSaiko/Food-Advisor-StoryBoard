@@ -7,19 +7,19 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+final class SignInViewController: UIViewController {
     
-    let signInViewModel = SignInViewModel(authenticationManager: AuthenticationManager(), navigationCoordinator: NavigationCoordinator())
+    private let signInViewModel = SignInViewModel(authenticationManager: AuthenticationManager(), navigationCoordinator: NavigationCoordinator())
     
-    @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak private var userNameTextField: UITextField!
+    @IBOutlet weak private var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    @IBAction func signInButtonTapped(_ sender: UIButton) {
+    @IBAction private func signInButtonTapped(_ sender: UIButton) {
         
         guard let userName = userNameTextField.text,
                 let password = passwordTextField.text,
