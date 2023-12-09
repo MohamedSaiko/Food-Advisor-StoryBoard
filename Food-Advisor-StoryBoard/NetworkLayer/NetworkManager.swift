@@ -17,6 +17,7 @@ enum NetworkError: Error {
 struct NetworkManager {
     
     func loadData(skip: Int,completion: @ escaping (Result<PostsData, NetworkError>) -> Void) {
+        
         let url = URL(string: allPostsUrl + limit + "\(skip)")
         
         guard let url = url else {

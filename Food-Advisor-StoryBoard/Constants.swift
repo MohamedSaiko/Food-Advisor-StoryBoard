@@ -29,3 +29,6 @@ let limit = "/?limit=10&skip="
 // MARK: StoryBoard Constants
 
 let postsCellIdentifier = "postCell"
+let homeViewControllerID = "HomeViewController"
+let signInViewControllerID = "SignInViewController"
+

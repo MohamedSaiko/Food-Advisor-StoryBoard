@@ -25,6 +25,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func configureUI() {
+        
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         
@@ -41,6 +42,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func updateTableView() {
+        
         homeViewModel.getPosts { [weak self] in
             guard let self = self else {
                 return
@@ -55,6 +57,7 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func handleRefreshControl() {
+        
         updateTableView()
         
         DispatchQueue.main.async {
@@ -64,10 +67,12 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func searchTapped() {
+        
         navigationItem.searchController = searchController
     }
     
     private func createFooterSpinner() -> UIView {
+        
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
         let spinner = UIActivityIndicatorView()
         
@@ -89,6 +94,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let post = homeViewModel.posts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: postsCellIdentifier, for: indexPath) as? PostCell
         
