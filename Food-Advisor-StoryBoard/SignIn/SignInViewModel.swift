@@ -6,18 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
-final class SignInViewModel: ObservableObject{
+final class SignInViewModel {
     
-    private let authenticationManager = AuthenticationManager()
+    private let authenticationManager: AuthenticationManager
+    private let navigationCoordinator: NavigationCoordinator
     
-    func authenticateUser(userName:String, password:String) {
-//        authenticationManager.authenticate(userName: userName, password: password) {
-//            
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "Home")
-//            self.present(vc, animated: true)
-//        }
+    init(authenticationManager: AuthenticationManager, navigationCoordinator: NavigationCoordinator) {
+        self.authenticationManager = authenticationManager
+        self.navigationCoordinator = navigationCoordinator
     }
-
+    
+    func authenticateUser(userName: String, password: String, navigationController: UINavigationController) {
+        authenticationManager.authenticate(userName: userName, password: password) { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.navigationCoordinator.goto(viewControllerWithID: homeViewControllerID, navigationController: navigationController)
+        }
+    }
 }

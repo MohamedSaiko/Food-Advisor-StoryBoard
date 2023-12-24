@@ -7,42 +7,57 @@
 
 import Foundation
 
+enum AuthenticationError: Error {
+    case invalidcrdentials
+    case encodingError
+    case invalidAuthenticationURL
+    case userDataDecodingError
+    case serverResponseError
+}
+
 struct AuthenticationManager {
     
-    func authenticate(userName: String, password: String, completion: @escaping ()->Void) {
+    func authenticate(userName: String, password: String, completion: @escaping () -> Void) {
         
-        let urlString = authenticationUrl
-        let url = URL(string: urlString)!
-        var request = URLRequest(url: url)
-        
-        request.httpMethod = "Post"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let body: [String:String] = [
-        "username": userName,
-        "password": password
+        let user: [String : String] = [
+            "username": userName,
+            "password": password
         ]
         
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        guard let uploadData = try? JSONEncoder().encode(user) else {
+            print(AuthenticationError.encodingError)
+            return
+        }
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
-            if let error = error {
-                print(String(describing: error))
-            }
-            
-            guard let data = data else {
+        let url = URL(string: authenticationUrl)
+        
+        guard let url = url else {
+            print(AuthenticationError.invalidAuthenticationURL)
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { data, response , error in
+            if error != nil {
+                print (AuthenticationError.invalidcrdentials)
                 return
             }
             
-            do {
-                let response = try JSONDecoder().decode(User.self, from: data)
+            guard let response = response as? HTTPURLResponse,
+                  (200...299).contains(response.statusCode) else {
+                      print (AuthenticationError.serverResponseError)
+                      return
+                  }
+            
+            if let data = data,
+               let dataString = String(data: data, encoding: .utf8) {
+                print ("got data: \(dataString)")
                 completion()
-                print("SUCCESS: \(response)")
-            } catch {
-                print(String(describing: error))
             }
         }
         task.resume()
     }
 }
-

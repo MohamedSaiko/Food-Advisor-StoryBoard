@@ -14,12 +14,14 @@ final class HomeViewModel {
     private var skip = 0
     private let totalNumberOfPosts = 150
     
-    init(networkManager: NetworkManager){
+    init(networkManager: NetworkManager) {
         self.networkManager = networkManager
     }
     
     func getPosts(completion: @escaping () -> Void) {
+        
         networkManager.loadData(skip: skip) { [weak self] result in
+            
             guard let self = self else {
                 return
             }
@@ -37,6 +39,7 @@ final class HomeViewModel {
     }
     
     func checkForLastCell(with indexPath: IndexPath, completion: () -> Void) {
+        
         if indexPath.row == posts.count - 1, posts.count < totalNumberOfPosts {
             completion()
         }

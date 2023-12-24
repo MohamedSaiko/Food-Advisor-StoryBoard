@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41173BB82B2316FB00B11AB4 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41173BB72B2316FB00B11AB4 /* NavigationCoordinator.swift */; };
 		41CED2462B1B58A500AABF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CED2452B1B58A500AABF21 /* AppDelegate.swift */; };
 		41CED2482B1B58A500AABF21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CED2472B1B58A500AABF21 /* SceneDelegate.swift */; };
 		41CED2522B1B58A700AABF21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CED2502B1B58A700AABF21 /* LaunchScreen.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		41173BB72B2316FB00B11AB4 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
 		41CED2422B1B58A500AABF21 /* Food-Advisor-StoryBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food-Advisor-StoryBoard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CED2452B1B58A500AABF21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41CED2472B1B58A500AABF21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				41CED2452B1B58A500AABF21 /* AppDelegate.swift */,
 				41CED2472B1B58A500AABF21 /* SceneDelegate.swift */,
 				41CED2712B1B5CD400AABF21 /* Constants.swift */,
+				41173BB72B2316FB00B11AB4 /* NavigationCoordinator.swift */,
 				41CED26B2B1B5CD300AABF21 /* Models */,
 				41CED26E2B1B5CD300AABF21 /* NetworkLayer */,
 				41CED2722B1B5CD400AABF21 /* SignIn */,
@@ -200,6 +203,7 @@
 				41CED2462B1B58A500AABF21 /* AppDelegate.swift in Sources */,
 				41CED2652B1B5C1500AABF21 /* HomeViewModel.swift in Sources */,
 				41CED2792B1B5CD400AABF21 /* AuthenticationManager.swift in Sources */,
+				41173BB82B2316FB00B11AB4 /* NavigationCoordinator.swift in Sources */,
 				41E6DE0C2B1B639D008D17F5 /* PostCell.swift in Sources */,
 				41CED2482B1B58A500AABF21 /* SceneDelegate.swift in Sources */,
 				41CED27A2B1B5CD400AABF21 /* NetworkManager.swift in Sources */,
